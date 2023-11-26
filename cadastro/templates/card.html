@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            {% if user.member.state %}
+            <div class="user-card">
+                <h2 class="text-center"></h2>
+                <hr>
+                <img style="float: right; padding-right: 10px; width: 100px;" id="qrcode" src="{{ qrcode }}">
+                <div class="form-group">
+                    <p id="username">{{ user.name }} {{ user.last_name }}</p>
+                </div>
+                <div class="form-group">
+                    <p id="cid">CID-10 {{ member.cid }} 
+                </div>
+                <div class="form-group">
+                    <p id="decreto">Decreto:</br>5.296/04</p>
+                </div>
+                <div class="form-group">
+                    <p id="leis">Leis Federais:</br>
+                    10.048/00 e 12.764/12</p>
+                </div>
+                <hr>
+            </div>
+            {% endif %}
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

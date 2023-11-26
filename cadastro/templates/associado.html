@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <h2>{{ request.user.name }} - Associado</h2>
+    {% if message %}
+        <strong><p style="color: red;">{{ message }}</p></strong>
+        {% endif %}
+        {% if not user.member.state %}
+        <a type="button" class="btn btn-primary" href="{% url 'cadastro_associado' %}">Cadastro</a>
+        {% endif %}
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 mx-auto">
+                    {% if user.member.state %}
+                    <div class="user-card">
+                        <h2 class="text-center">Dados do associado</h2>
+                        <hr>
+                        <div class="form-group">
+                            <label>Nome:</label>
+                            <p id="username">{{ user.name }} {{ user.last_name }}</p>
+                        </div>
+                        <div class="form-group">
+                            <label>Nascimento</label>
+                            <p id="birthday">{{ user.birthday }}</p>
+                        </div>
+                        <div class="form-group">
+                            <label>CID-10:</label>
+                            <p id="cid">{{ member.cid }}</p>
+                        </div>
+                        <div class="form-group">
+                            <label>Cidade (UF):</label>
+                            <p id="city"> {{ member.city }} / {{ member.state }}</p>
+                        </div>
+                        <div class="form-group">
+                            <label>Alergia:</label>
+                            <p id="alergia">{{ member.alergia }}</p>
+                        </div>
+                        <div class="form-group">
+                            <label>Sensibilidade:</label>
+                            <p id="sensibilidade">{{ member.sensibilidade }}</p>
+                        </div>
+                        {% if member.responsavel %}
+                        <div class="form-group">
+                            <label>Responsável:</label>
+                            <p id="responsavel">{{ member.nome_responsavel }}</p>
+                        </div>
+                        {% endif %}
+                        {% if file_report.upload_report_date %}
+                        <div class="form-group">
+                            <label>Laudo:</label>
+                            <p id="laudo">Enviado em {{ file_report.upload_report_date }}</p>
+                        </div>
+                        {% endif %}
+                        {% if file_prescription.upload_prescription_date %}
+                        <div class="form-group">
+                            <label>Receita:</label>
+                            <p id="receita">Enviado em {{ file_prescription.upload_prescription_date }}</p>
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% endif %}
+                    {% if user.member.state %}
+                        <a type="button" class="btn btn-primary" href="{% url 'cadastro_associado' %}">Alterar dados</a>
+                        <a type="button" class="btn btn-primary" href="{% url 'index' %}">Voltar</a>
+                    {% endif %}
+                    {% if card %}
+                    <form action="{% url 'card' %}">
+                        <p>Clique <button type="submit" class="btn btn-link" >aqui</button> para gerar suar carteirinha</p></br>
+                    </form>
+                    {% else %}
+                    <strong><p style="color: red;">Complete o seu cadastro para poder gerar sua carteirinha.</p></strong>
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+
+{% endblock %}

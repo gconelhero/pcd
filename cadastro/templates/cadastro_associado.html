@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <h2>Associe-se</h2>
+    <form method="post" enctype="multipart/form-data" action="{% url 'cadastro_associado' %}">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col">
+                {{ form.state.label_tag }}
+                {{ form.state }}
+                {% if form.state.errors %}<strong><p style="color: red;">{{ form.state.errors }}</p></strong>{% endif %}
+            </div>
+            <div class="col">
+              {{ form.city.label_tag }}
+              {{ form.city }}
+              {% if form.city.errors %}<strong><p style="color: red;">{{ form.state.errors }}</p></strong>{% endif %}
+            </div>
+        </div>
+        <div class="form-group">
+            {{ form.address.label_tag }}
+            {{ form.address }}
+            {% if form.address.errors %}<strong><p style="color: red;">{{ form.address.errors }}</p></strong>{% endif %}
+        </div>
+        <div class="form-group">
+            {{ form.cid.label_tag }}
+            {{ form.cid }}
+            {% if form.cid.errors %}<strong><p style="color: red;">{{ form.cid.errors }}</p></strong>{% endif %}
+        </div>
+        <div class="form-group">
+            {{ form.responsavel.label_tag }}
+            {{ form.responsavel }}
+            {% if form.responsavel.errors %}<strong><p style="color: red;">{{ form.responsavel.errors }}</p></strong>{% endif %}
+        </div>
+        <div class="form-group">
+            {{ form.nome_responsavel }}
+            {% if form.nome_responsavel.errors %}<strong><p style="color: red;">{{ form.nome_responsavel.errors }}</p></strong>{% endif %}
+        </div>
+        <div class="form-group">
+            {{ form.alergia.label_tag }}
+            {{ form.alergia }}
+            {% if form.alergia.errors %}<strong><p style="color: red;">{{ form.alergia.errors }}</p></strong>{% endif %}
+        </div>
+        <div class="form-group">
+            {{ form.sensibilidade.label_tag }}
+            {{ form.sensibilidade }}
+            {% if form.sensibilidade.errors %}<strong><p style="color: red;">{{ form.sensibilidade.errors }}</p></strong>{% endif %}
+        </div>
+        <div class="form-group">
+            {{ form_report.file_report.label_tag }} (PDF)
+            {{ form_report.file_report }}
+        </div>
+        <div class="form-group">
+            {{ form_prescription.file_prescription.label_tag }} (PDF)
+            {{ form_prescription.file_prescription }}
+        </div>
+        {% if message %}
+        <strong><p style="color: red;">{{ message }}</p></strong>
+        {% endif %}
+        </br>
+        <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+</div>
+
+{% endblock %}
