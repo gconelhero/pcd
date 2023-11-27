@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
-
+from django.conf import settings
 from .models import CustomUser, Member, FileReport, FilePrescription
 
 ESTADOS = (('',''),('AC','Acre AC'),('AL','Alagoas AL'),('AP','Amapá AP'),
@@ -88,7 +88,7 @@ class MemberForm(forms.ModelForm):
     def get_dynamic_choices(self):
         selected_state = self['state'].value()
         if selected_state:
-            with open(f"./static/municipios/{selected_state}.csv") as cities: # Configurar posterio para deploy
+            with open(f"{settings.STATIC_ROOT}/municipios/{selected_state}.csv") as cities: # Configurar posterio para deploy
                 cities_list = [(city.split(',')[-1].replace('\n', ''), city.split(',')[-1].replace('\n', '')) for city in cities]
 
             return cities_list

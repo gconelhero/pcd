@@ -4,3 +4,4 @@ Pillow==10.1.0
 qrcode==7.4.2
 reportlab==4.0.7
 xhtml2pdf==0.2.13
+django-cors-headers==4.3.1

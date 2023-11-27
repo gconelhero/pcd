@@ -1,12 +1,13 @@
+import os
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-@l3r4vz&5r!)ub=po6=8ub78i5oqc#q#9^wm16m9@qlgl7p8ad'
 
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['192.168.5.150', 'localhost']
+ALLOWED_HOSTS = ['novarecupera.com.br']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -16,6 +17,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'cadastro',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -26,7 +28,43 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
+
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
+
+CORS_ALLOW_METHODS = (
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+)
+
+CORS_ALLOW_HEADERS = (
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+)
+
+CORS_ALLOWED_ORIGINS = [
+    "http://novarecupera.com.br",  # or your frontend URL
+    "https://novarecupera.com.br",
+]
+
+CORS_ALLOWED_ORIGIN_REGEXES = [
+r"^https://\w+\.domain\.com$",
+]
+
+CORS_ORIGIN_WHITELIST=('novarecupera.com.br')
 
 ROOT_URLCONF = 'pcd.urls'
 
@@ -97,21 +135,21 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-STATIC_ROOT = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 MEDIA_UR = '/media/'
 
-MEDIA_ROOT = 'media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 # Deployment
 # STATIC_ROOT = "/var/www/example.com/static/"
 # $ python manage.py collectstatic
 
-STATICFILES_DIRS = [
-    BASE_DIR / "static",
-    #"/var/www/static/",
-]
-
+if DEBUG:
+    STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+else:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+#STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 

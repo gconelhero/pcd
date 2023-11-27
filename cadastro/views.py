@@ -1,9 +1,12 @@
+import csv
+
 from django.shortcuts import render, redirect, HttpResponseRedirect, get_object_or_404, HttpResponse
 from django.http import JsonResponse, FileResponse
 from django.urls import reverse
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from django.template.loader import get_template
+from django.conf import settings
 
 import filetype 
 import qrcode
@@ -117,7 +120,9 @@ def cadastro_associado(request):
             message = 'Os dados não foram preenchidos corretamente'
     else:
         if request.GET.get('state'):
-            with open(f"./static/municipios/{request.GET.get('state')}.csv") as cities:
+            with open(f"{settings.STATIC_ROOT}/municipios/{request.GET.get('state')}.csv", 'r') as cities:
+                cities_list = csv.DictReader(cities)
+            #    cities_list = [city.split(',')[-1] for city in cities_list]
                 cities_list = [city.split(',')[-1].replace('\n', '') for city in cities]
                 data = {'cities': cities_list}
 
@@ -186,7 +191,7 @@ def document_view(request):
 
 def pdf_view(request, *args, **kwargs):
     path_info = request.META['PATH_INFO']
-    pdf_path = f"media/{path_info.split('pdf_view/')[-1]}"
+    pdf_path = f"{settings.MEDIA_ROOT}{path_info.split('pdf_view/')[-1]}"
         
     return FileResponse(open(pdf_path, 'rb'), content_type='application/pdf', as_attachment=False)
 
@@ -202,6 +207,6 @@ def generate_qrcode_data(request, pdf_path):
     card.qr_code_data = pdf_url
     user_directory_save = user_directory_path(member, 'qr_image.png')
     card.qr_code_image = user_directory_save
-    qr_image.save(f'media/{card.qr_code_image}')
+    qr_image.save(f'{settings.MEDIA_ROOT}{card.qr_code_image}')
     card.save()
     

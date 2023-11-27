@@ -13,9 +13,10 @@ function formatarTelefone(input) {
         // Make an AJAX request to the Django view
         $.ajax({
             url: '/cadastro_associado/',  // Replace with your actual URL
-            data: {'state': selectedOption},
+            data: {'state': selectedOption, 'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val()},
             dataType: 'json',
             success: function (data) {
+              console.log(data);
               $('#id_city').empty();
               data.cities.forEach(function (city) {
                   $('#id_city').append($('<option>', {
@@ -24,8 +25,8 @@ function formatarTelefone(input) {
                   }));
               });
             },
-            error: function (error) {
-                console.log('Error:', error);
+            error: function (xhr, status, error) {
+                console.log('Error:', xhr, status, error);
             }
         });
     });
