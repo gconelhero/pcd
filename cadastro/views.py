@@ -1,6 +1,6 @@
 import csv
 
-from django.shortcuts import render, redirect, HttpResponseRedirect, get_object_or_404, HttpResponse
+from django.shortcuts import render, redirect, HttpResponseRedirect, get_object_or_404
 from django.http import JsonResponse, FileResponse
 from django.urls import reverse
 from django.contrib.auth import login, logout, authenticate
@@ -10,8 +10,6 @@ from django.conf import settings
 
 import filetype 
 import qrcode
-from xhtml2pdf import pisa
-from io import BytesIO
 
 from .forms import LoginForm, CustomUserCreationForm, MemberForm, FilePrescriptionForm, FileReportForm
 from .models import Member, MemberCard, FileReport, FilePrescription, user_directory_path
@@ -120,9 +118,15 @@ def cadastro_associado(request):
             message = 'Os dados não foram preenchidos corretamente'
     else:
         if request.GET.get('state'):
+            if not settings.STATIC_ROOT:
+                with open(f"{settings.STATIC_URL}municipios/{request.GET.get('state')}.csv", 'r') as cities:
+                    cities_list = csv.DictReader(cities)
+                    cities_list = [city.split(',')[-1].replace('\n', '') for city in cities]
+                    data = {'cities': cities_list}
+
+                return JsonResponse(data, safe=False)    
             with open(f"{settings.STATIC_ROOT}/municipios/{request.GET.get('state')}.csv", 'r') as cities:
                 cities_list = csv.DictReader(cities)
-            #    cities_list = [city.split(',')[-1] for city in cities_list]
                 cities_list = [city.split(',')[-1].replace('\n', '') for city in cities]
                 data = {'cities': cities_list}
 

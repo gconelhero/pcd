@@ -1,0 +1,38 @@
+# Ignore compiled Python files
+*.pyc
+__pycache__
+
+# Ignore the virtual environment directory
+venv/
+
+# Ignore environment variables file
+.env
+
+# Ignore database files
+db.sqlite3
+
+# Ignore migrations cadastro/
+cadastro/migrations/
+
+# Ignore include
+include/
+
+# Ignore media files directory
+media/
+
+# Ignore configuration files for popular editors
+.vscode/
+.idea/
+
+# Ignore cache and temporary files
+*.swp
+*.swo
+*.bak
+*.pyo
+*.pyc
+*~
+.cfg
+
+# Ignore system files
+.DS_Store
+Thumbs.db

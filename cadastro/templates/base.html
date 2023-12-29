@@ -13,8 +13,8 @@
 </head>
 <body>
     {% block content %}{% endblock %}
-    <script src="/static/JS/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript" src="/static/JS/jquery-3.7.1.min.js"></script>
-    <script src="/static/JS/cadastro.js"></script>
+    <script type="text/javascript" src="{% static 'JS/bootstrap.bundle.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'JS/jquery-3.7.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'JS/cadastro.js' %}"></script>
 </body>
 </html>
