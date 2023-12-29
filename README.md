@@ -13,11 +13,10 @@ Objectives:
 Install and config MongoDB:<br>
 ```python3 -m pip venv pcd```<br>
 ```cd pcd```<br>
+```source bin/activate```<br>
 ```git clone https://github.com/gconelhero/pcd```<br>
 ```cd pcd```<br>
-```source bin/activate```<br>
 ```python -m pip install -r requirements```<br>
-```source bin/activate```<br>
 ```python -m pip install -r requirements.txt```<br>
 ```python manage.py makemigrations cadastro```<br>
 ```python manage.py migrate```<br>
