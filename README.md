@@ -10,14 +10,14 @@ Objectives:
 ![2](https://github.com/gconelhero/brasileiro/assets/26088216/b3fa2bd3-bfa0-435f-a79a-6cde629a3cf1)
 
 Install and config MongoDB:<br>
-```git clone https://github.com/gconelhero/pcd```
-```cd pcd```
-```python3 -m pip venv .```
-```source bin/activate```
-```python -m pip install -r requirements```
-```source bin/activate```
-```python -m pip install -r requirements.txt```
-```python manage.py makemigrations cadastro```
-```python manage.py migrate```
-```python manage.py createsuperuser```
-```python manage.py runserver```
+```git clone https://github.com/gconelhero/pcd```<br>
+```cd pcd```<br>
+```python3 -m pip venv .```<br>
+```source bin/activate```<br>
+```python -m pip install -r requirements```<br>
+```source bin/activate```<br>
+```python -m pip install -r requirements.txt```<br>
+```python manage.py makemigrations cadastro```<br>
+```python manage.py migrate```<br>
+```python manage.py createsuperuser```<br>
+```python manage.py runserver```<br>
