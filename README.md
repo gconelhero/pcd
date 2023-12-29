@@ -16,7 +16,6 @@ Install and config MongoDB:<br>
 ```source bin/activate```<br>
 ```git clone https://github.com/gconelhero/pcd```<br>
 ```cd pcd```<br>
-```python -m pip install -r requirements```<br>
 ```python -m pip install -r requirements.txt```<br>
 ```python manage.py makemigrations cadastro```<br>
 ```python manage.py migrate```<br>
