@@ -20,3 +20,6 @@ Install and config MongoDB:<br>
 ```python manage.py makemigrations cadastro```<br>
 ```python manage.py migrate```<br>
 ```python manage.py runserver```<br>
+
+### If deploy set DEBUG=False run env_gen.py config static files and media files in settings.py.
+### For use createsuperuser rewrite CustomUser and Member Models in cadastro/models.py
