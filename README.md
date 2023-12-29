@@ -10,7 +10,7 @@ Objectives:
 
 ![2](https://github.com/gconelhero/pcd/assets/26088216/75354bdc-6c1a-464d-8771-5dd8475f0956)
 
-Install and config MongoDB:<br>
+Install and config PCD demo:<br>
 ```python3 -m pip venv pcd```<br>
 ```cd pcd```<br>
 ```source bin/activate```<br>
