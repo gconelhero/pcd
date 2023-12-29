@@ -175,6 +175,7 @@ def card(request):
     gen_qr = generate_qrcode_data(request, f'{file_report.file_report}')
     qr_code = MemberCard.objects.get(card_id=member.member.pk)
     qr_code_image = f'{qr_code.qr_code_image.url}'
+    print(qr_code_image)
     if request.method == 'POST':
         print(request.POST)
 
