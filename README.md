@@ -10,9 +10,10 @@ Objectives:
 ![2](https://github.com/gconelhero/brasileiro/assets/26088216/b3fa2bd3-bfa0-435f-a79a-6cde629a3cf1)
 
 Install and config MongoDB:<br>
+```python3 -m pip venv pcd```<br>
+```cd pcd```<br>
 ```git clone https://github.com/gconelhero/pcd```<br>
 ```cd pcd```<br>
-```python3 -m pip venv .```<br>
 ```source bin/activate```<br>
 ```python -m pip install -r requirements```<br>
 ```source bin/activate```<br>
