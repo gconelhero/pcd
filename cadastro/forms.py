@@ -16,7 +16,7 @@ ESTADOS = (('',''),('AC','Acre AC'),('AL','Alagoas AL'),('AP','Amapá AP'),
 
 
 class LoginForm(forms.Form):
-    username = forms.CharField(label='Nome de usuário', max_length=100, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    username = forms.CharField(label='Email', max_length=100, widget=forms.TextInput(attrs={'class': 'form-control'}))
     password = forms.CharField(label='Senha', widget=forms.PasswordInput(attrs={'class': 'form-control'}))
 
 
