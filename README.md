@@ -19,5 +19,4 @@ Install and config MongoDB:<br>
 ```python -m pip install -r requirements.txt```<br>
 ```python manage.py makemigrations cadastro```<br>
 ```python manage.py migrate```<br>
-```python manage.py createsuperuser```<br>
 ```python manage.py runserver```<br>
